@@ -160,3 +160,93 @@ create table tblRoteirista (
 );
 
 desc tblRoteirista;
+
+create table tblFilmeGenero (
+	idFilmeGenero int not null auto_increment primary key,
+    idFilme int not null,
+    constraint FK_Filme_FilmeGenero
+    foreign key (idFilme)
+    references tblFilme(idFilme),
+    idGenero int not null,
+    constraint FK_Genero_FilmeGenero
+    foreign key (idGenero)
+    references tblGenero(idGenero),
+    unique index (idFilmeGenero)
+);
+
+desc tblFilmeGenero;
+
+create table tblFilmeDiretor (
+	idFilmeDiretor int not null auto_increment primary key,
+    idFilme int not null,
+    constraint FK_Filme_FilmeDiretor
+    foreign key (idFilme)
+    references tblFilme(idFilme),
+    idDiretor int not null,
+    constraint FK_Diretor_FilmeDiretor
+    foreign key (idDiretor)
+    references tblDiretor(idDiretor),
+    unique index (idFilmeDiretor)
+);
+
+desc tblFilmeDiretor;
+
+create table tblFilmeRoteirista (
+	idFilmeRoteirista int not null auto_increment primary key,
+    idFilme int not null,
+    constraint FK_Filme_FilmeRoteirista
+    foreign key (idFilme)
+    references tblFilme(idFilme),
+    idRoteirista int not null,
+    constraint FK_Roteirista_FilmeRoteirista
+    foreign key (idRoteirista)
+    references tblRoteirista(idRoteirista),
+    unique index (idFilmeRoteirista)
+);
+
+desc tblFilmeRoteirista;
+
+create table tblDiretorNacionalidade (
+	idDiretorNacionalidade int not null auto_increment primary key,
+    idDiretor int not null,
+    constraint FK_Diretor_DiretorNacionalidade
+    foreign key (idDiretor)
+    references tblDiretor(idDiretor),
+    idNacionalidade int not null,
+    constraint FK_Nacionalidade_DiretorNacionalidade
+    foreign key (idNacionalidade)
+    references tblNacionalidade(idNacionalidade),
+    unique index (idDiretorNacionalidade)
+);
+
+desc tblDiretorNacionalidade;
+
+create table tblAtorNacionalidade (
+	idAtorNacionalidade int not null auto_increment primary key,
+    idAtor int not null,
+    constraint FK_Ator_AtorNacionalidade
+    foreign key (idAtor)
+    references tblAtor(idAtor),
+    idNacionalidade int not null,
+    constraint FK_Nacionalidade_AtorNacionalidade
+    foreign key (idNacionalidade)
+    references tblNacionalidade(idNacionalidade),
+    unique index (idAtorNacionalidade)
+);
+
+desc tblAtorNacionalidade;
+
+create table tblRoteiristaNacionalidade (
+	idRoteiristaNacionalidade int not null auto_increment primary key,
+    idRoteirista int not null,
+    constraint FK_Roteirista_RoteiristaNacionalidade
+    foreign key (idRoteirista)
+    references tblRoteirista(idRoteirista),
+    idNacionalidade int not null,
+    constraint FK_Nacionalidade_RoteiristaNacionalidade
+    foreign key (idNacionalidade)
+    references tblNacionalidade(idNacionalidade),
+    unique index (idRoteiristaNacionalidade)
+);
+
+desc tblRoteiristaNacionalidade;
