@@ -41,13 +41,11 @@ insert into tblFilme (nome,
                     
                     
 
-#Tabela Filme Genero                    
-insert into tblFilmeGenero (idFilme, idGenero)
+#Tabela Filme Ator                   
+insert into tblFilmeAtor (idFilme, idAtor)
 				values	(1, 1),
-						(1, 2),
-                        (1, 3),
-                        (2, 2),
-                        (2, 3);
+						(1, 2);
+						
                         
 #Update
 ##atribui o valor indicado ao campo duração em todos os filmes
