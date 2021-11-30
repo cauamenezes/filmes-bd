@@ -41,10 +41,16 @@ insert into tblFilme (nome,
                     
                     
 
-#Tabela Filme Ator                   
-insert into tblFilmeAtor (idFilme, idAtor)
+#Tabela Roteirista Nacionalidade                   
+insert into tblRoteiristaNacionalidade (idRoteirista, idNacionalidade)
 				values	(1, 1),
-						(1, 2);
+						(2, 1),
+                        (3, 2),
+                        (4, 2),
+                        (5, 1),
+                        (5, 3),
+                        (6, 1),
+                        (7, 1);
 						
                         
 #Update
