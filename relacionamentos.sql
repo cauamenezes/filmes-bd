@@ -1,5 +1,8 @@
 #RELACIONAMENTO ENTRE TABELAS
 #FORMA 01 - RELACIONAMENTO PELO WHERE
+
+use dbfilmesturmaa;
+
 select tblFilme.nome as nomeFilme, tblFilme.duracao,
        tblFilme.dataLancamento, tblGenero.nome as nomeGenero
 from   tblFilme, tblGenero, tblfilmegenero
@@ -17,7 +20,7 @@ select * from tblFilmeGenero;
 
 ## inner join - é utilizado para relacionar tabelas e trazer a igualdade entre elas
 select tblFilme.nome as nomeFilme, tblFilme.duracao,
-       tblFIlme.dataLancamento, tblGenero.nome as nomeGenero
+       tblFilme.dataLancamento, tblGenero.nome as nomeGenero
 from   tblFilme inner join tblFilmeGenero
 		  on tblFilme.idFilme = tblFilmeGenero.idFilme
 	   inner join tblgenero 
