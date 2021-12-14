@@ -40,7 +40,43 @@ create function saudacao(usuario char(30))
 		END $$
         
 #Chamando uma função        
-select saudacao(' José') as mensagem;
+select saudacao(' Cintia') as mensagem;
 
 #Apaga uma função
 drop function saudacao;
+
+
+#### PROCEDURES
+
+## IN - utilizada quando apenas teremos a chegada de argumentos
+## OUT - utilizado quando a procedure terá apenas retorno de saída
+## INOUT - utilizado quando temos entrada de argumentos e retorno de saída
+
+DELIMITER $$
+create procedure procListarFilmes (IN idGenero int)
+	BEGIN
+        set @comandoPrincipal := 
+        'select tblFilme.nome as nomeFilme, tblFilme.dataLancamento,
+				   tblGenero.nome as nomeGenero
+			from   tblFilme
+				inner join tblFilmeGenero
+					on tblFilme.idFilme = tblFilmeGenero.idFilme
+				inner join tblGenero
+					on tblGenero.idGenero = tblFilmeGenero.idGenero
+        ';
+        
+		if idGenero > 0 then
+			set @comando := concat(@comandoPrincipal, 'where tblGenero.idGenero = ', idGenero);
+		else
+			set @comando := @comandoPrincipal;
+        end if;
+        
+        prepare scriptSQL from @comando;
+        execute scriptSQL;
+        
+    END $$
+
+#chamando a procedure
+call procListarFilmes(0);
+    
+drop procedure procListarFilmes;
